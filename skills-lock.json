@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "skills": {
+    "architect": {
+      "source": "local-codex-adapted-skills",
+      "sourceType": "github",
+      "skillPath": "skills/architect/SKILL.md",
+      "computedHash": "69553720011f887eacc9b1832b781f868978b6118866ff886c6b9a94cb283076"
+    },
+    "imprint": {
+      "source": "local-codex-adapted-skills",
+      "sourceType": "github",
+      "skillPath": "skills/imprint/SKILL.md",
+      "computedHash": "66d9bb9ff8dd15c1dc9b3c39b4068193910e5af9bfa1d2a90a2ed303d8f9a387"
+    },
+    "recover": {
+      "source": "local-codex-adapted-skills",
+      "sourceType": "github",
+      "skillPath": "skills/recover/SKILL.md",
+      "computedHash": "f3b7c5706cf5423c861dae4344e49fb64acc372776cc5dac9045738be2bbc779"
+    },
+    "remember": {
+      "source": "local-codex-adapted-skills",
+      "sourceType": "github",
+      "skillPath": "skills/remember/SKILL.md",
+      "computedHash": "5a95962c244cdf1b5cacf12dcd785e5790d598cb3f5a1d7064405fc16d31f3e1"
+    },
+    "review": {
+      "source": "local-codex-adapted-skills",
+      "sourceType": "github",
+      "skillPath": "skills/review/SKILL.md",
+      "computedHash": "8feb4fcccd5c682ef1ffa9ed6c46f364577c697aede8eb247dd5dff21c3ed0fd"
+    }
+  }
+}

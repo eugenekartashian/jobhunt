@@ -1,0 +1,6 @@
+interface:
+  display_name: "Recover"
+  short_description: "Diagnose failed build sessions"
+  default_prompt: "Use $recover to diagnose what went wrong and choose the right recovery path."
+policy:
+  allow_implicit_invocation: true

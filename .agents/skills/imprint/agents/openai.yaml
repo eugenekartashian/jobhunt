@@ -1,0 +1,6 @@
+interface:
+  display_name: "Imprint"
+  short_description: "Capture UI patterns for consistency"
+  default_prompt: "Use $imprint to update the UI registry from the component I just built."
+policy:
+  allow_implicit_invocation: true

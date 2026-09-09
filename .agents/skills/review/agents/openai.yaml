@@ -1,0 +1,6 @@
+interface:
+  display_name: "Review"
+  short_description: "Review built work against the plan"
+  default_prompt: "Use $review to verify this feature against the plan and project standards."
+policy:
+  allow_implicit_invocation: true
