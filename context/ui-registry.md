@@ -245,3 +245,8 @@ Feature 04 Database Schema and its follow-up did not add or change UI components
 - Purpose: Shared content frame for authenticated Profile, Job Details, Dashboard, and Find Jobs screens.
 - Classes: `bg-background px-4 py-8 sm:px-8 lg:px-20 lg:py-12`, inner `mx-auto w-full max-w-5xl`, section spacing `gap-5` to `gap-6`.
 - Pattern notes: Keep primary authenticated page content at the same readable width across profile, job details, dashboard, and search. The navbar may remain wider so its navigation has room to breathe.
+
+### CV Upload Flow
+
+- Purpose: Upload PDF CVs through the authenticated profile action without blocking the user response on analytics.
+- Pattern notes: Keep the Server Action body limit above the 5 MB product limit for multipart overhead, and schedule the PostHog event with Next.js `after` after storage and profile persistence succeed.
