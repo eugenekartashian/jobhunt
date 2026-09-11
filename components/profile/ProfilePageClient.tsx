@@ -49,7 +49,6 @@ const createEmptyProfile = (email: string, id: string): Profile => ({
   remote_preference: ["any"],
   preferred_locations: [],
   salary_expectation: "",
-  cover_letter_tone: null,
   linkedin_url: "",
   portfolio_url: null,
   work_authorization: null,
@@ -460,7 +459,7 @@ export function ProfilePageClient({
                 <Field label="Location"><input className={inputClassName} placeholder="City, Country" value={profile.location ?? ""} onChange={(event) => updateProfile("location", event.target.value)} /></Field>
                 <Field label="LinkedIn URL"><input className={inputClassName} value={profile.linkedin_url ?? ""} onChange={(event) => updateProfile("linkedin_url", event.target.value)} /></Field>
                 <Field label="Portfolio / GitHub"><input className={inputClassName} value={profile.portfolio_url ?? ""} onChange={(event) => updateProfile("portfolio_url", event.target.value)} /></Field>
-                <Field label="Work Authorization"><select className={selectClassName} value={profile.work_authorization ?? ""} onChange={(event) => updateProfile("work_authorization", event.target.value as Profile["work_authorization"])}><option value="citizen">Citizen</option><option value="permanent_resident">Permanent Resident</option><option value="visa_required">Visa Required</option></select></Field>
+                <Field label="Do you have work authorization?"><select className={selectClassName} value={profile.work_authorization ?? ""} onChange={(event) => updateProfile("work_authorization", event.target.value ? event.target.value as Profile["work_authorization"] : null)}><option value="">Select an option</option><option value="citizen">Yes - Citizen</option><option value="permanent_resident">Yes - Permanent Resident</option><option value="visa_required">Visa Required</option></select></Field>
               </div>
             </Section>
 
@@ -515,7 +514,6 @@ export function ProfilePageClient({
                   </Field>
                   <div className="mt-3"><TagList items={profile.preferred_locations} onRemove={(item) => removeTag("preferred_locations", item)} /></div>
                 </div>
-                <Field label="Cover Letter Tone"><select className={selectClassName} value={profile.cover_letter_tone ?? ""} onChange={(event) => updateProfile("cover_letter_tone", event.target.value as Profile["cover_letter_tone"])}><option value="enthusiastic">Enthusiastic</option><option value="formal">Formal</option><option value="casual">Casual</option></select></Field>
               </div>
             </Section>
         </ProfileForm>

@@ -22,11 +22,11 @@ export function BottomCta({ primaryHref, primaryLabel = "Get Started" }: BottomC
     <section className="bg-landing-glow border-b border-border px-6 py-20 text-center sm:px-10">
       <div className="mx-auto flex max-w-3xl flex-col items-center">
         <h2 className="text-4xl font-bold leading-[1.08] text-text-slate sm:text-section-display">
-          Your next job search can feel a<br className="hidden sm:block" />
-          lot less overwhelming
+          Make your next move<br className="hidden sm:block" />
+          with more clarity
         </h2>
         <p className="mt-7 text-base font-medium leading-6 text-text-secondary">
-          Set up your profile, upload your CV, and start finding matches in
+          Create your profile, add your CV, and discover better-fit roles in
           minutes.
         </p>
         <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row">
@@ -43,7 +43,7 @@ export function BottomCta({ primaryHref, primaryLabel = "Get Started" }: BottomC
             href="/find-jobs"
             className="focus-ring inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-surface px-6 py-2.5 text-sm font-medium leading-5 text-text-primary shadow-card transition-colors hover:bg-surface-secondary"
           >
-            Find Your First Match
+            Browse Open Roles
           </Link>
         </div>
       </div>

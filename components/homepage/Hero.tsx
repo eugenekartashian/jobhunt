@@ -22,13 +22,13 @@ export function Hero({ primaryHref, primaryLabel = 'Get Started' }: HeroProps): 
     <section className="bg-landing-glow flex min-h-103.5 items-center justify-center border-b border-border px-6 py-16 text-center sm:px-10">
       <div className="mx-auto flex max-w-3xl flex-col items-center">
         <h1 className="max-w-3xl text-5xl font-bold leading-[1.05] text-text-slate sm:text-hero">
-          Job hunting is hard.
+          Your next role is closer.
           <br />
-          Your tools shouldn&apos;t be.
+          Your search should feel simpler.
         </h1>
         <p className="mt-7 max-w-2xl text-base font-medium leading-6 text-text-secondary">
-          Stop applying blind. Job Hunt finds the jobs, researches the
-          companies, and gives you everything you need to stand out.
+          Find relevant opportunities, learn about the companies behind them,
+          and prepare stronger applications from one place.
         </p>
         <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row">
           <TrackedLink
@@ -44,7 +44,7 @@ export function Hero({ primaryHref, primaryLabel = 'Get Started' }: HeroProps): 
             href="/find-jobs"
             className="focus-ring inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-surface px-6 py-2.5 text-sm font-medium leading-5 text-text-primary shadow-card transition-colors hover:bg-surface-secondary"
           >
-            Find Your First Match
+            Explore Open Roles
           </Link>
         </div>
       </div>

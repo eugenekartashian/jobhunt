@@ -2,8 +2,6 @@ export type ExperienceLevel = "junior" | "mid" | "senior" | "lead";
 
 export type RemotePreference = "remote" | "onsite" | "hybrid" | "any";
 
-export type CoverLetterTone = "formal" | "casual" | "enthusiastic";
-
 export type WorkAuthorization =
   | "citizen"
   | "permanent_resident"
@@ -73,7 +71,6 @@ export type Profile = {
   remote_preference: RemotePreference[] | null;
   preferred_locations: string[];
   salary_expectation: string | null;
-  cover_letter_tone: CoverLetterTone | null;
   linkedin_url: string | null;
   portfolio_url: string | null;
   work_authorization: WorkAuthorization | null;

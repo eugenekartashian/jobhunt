@@ -9,7 +9,7 @@ export function DashboardPreview(): ReactElement {
       <div className="mx-auto max-w-6xl">
         <Image
           src={dashboardDemo}
-          alt="Job Hunt dashboard showing jobs found, match rate, recent activity, and company research activity."
+          alt="Job Hunt dashboard with saved opportunities, match rate, recent activity, and employer research."
           width={4788}
           height={2416}
           priority

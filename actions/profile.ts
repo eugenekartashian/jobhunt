@@ -10,7 +10,6 @@ import { requireUserAuthenticated } from "@/lib/insforge-auth";
 import { capturePostHogServerEvent } from "@/lib/posthog-server";
 import { calculateCompletion } from "@/lib/profile-utils";
 import type {
-  CoverLetterTone,
   Education,
   ExperienceLevel,
   Profile,
@@ -51,7 +50,6 @@ export type ProfileExtractionResult = {
 const allowedValues = {
   experience_level: new Set<ExperienceLevel>(["junior", "mid", "senior", "lead"]),
   remote_preference: new Set<RemotePreference>(["remote", "onsite", "hybrid", "any"]),
-  cover_letter_tone: new Set<CoverLetterTone>(["formal", "casual", "enthusiastic"]),
   work_authorization: new Set<WorkAuthorization>(["citizen", "permanent_resident", "visa_required"]),
 };
 
@@ -504,7 +502,6 @@ async function saveProfileUnsafe(formData: FormData): Promise<ProfileSaveResult>
     remote_preference: remotePreference.length > 0 ? remotePreference : null,
     preferred_locations: asStringArray(input.preferred_locations),
     salary_expectation: asNullableString(input.salary_expectation),
-    cover_letter_tone: allowedValues.cover_letter_tone.has(input.cover_letter_tone as CoverLetterTone) ? input.cover_letter_tone : null,
     linkedin_url: asNullableString(input.linkedin_url),
     portfolio_url: asNullableString(input.portfolio_url),
     work_authorization: allowedValues.work_authorization.has(input.work_authorization as WorkAuthorization) ? input.work_authorization : null,

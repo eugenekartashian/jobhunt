@@ -268,3 +268,15 @@ Feature 04 Database Schema and its follow-up did not add or change UI components
 - Path: `app/(auth)/login/page.tsx`, `components/auth/OAuthButtons.tsx`
 - Purpose: OAuth entry experience for public users.
 - Pattern notes: Mobile uses content-driven hero height, compact spacing and type, while provider buttons retain a comfortable minimum height for touch input. Desktop spacing and the two-column layout remain unchanged.
+
+### Homepage Marketing Copy
+
+- Paths: `app/page.tsx`, `components/homepage/Hero.tsx`, `components/homepage/FeatureShowcase.tsx`, `components/homepage/Testimonial.tsx`, `components/homepage/BottomCta.tsx`
+- Purpose: Public product overview and conversion flow.
+- Pattern notes: Keep copy outcome-focused and concise across the hero, feature descriptions, social proof, and final CTA. Preserve the existing section rhythm, imagery, and token-based visual treatment when changing wording.
+
+### Work Authorization Field
+
+- Path: `components/profile/ProfilePageClient.tsx`
+- Purpose: Captures the user's work authorization status for profile context.
+- Pattern notes: Use the direct question `Do you have work authorization?`, start with `Select an option`, and preserve the existing database enum values for saved profiles.

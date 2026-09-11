@@ -8,12 +8,12 @@ export function Testimonial(): ReactElement {
     <section className="border-b border-border bg-surface px-6 py-24 text-center sm:px-10">
       <div className="mx-auto max-w-4xl">
         <p className="text-xs font-bold uppercase tracking-[0.12em] text-accent">
-          Success Stories
+          From the community
         </p>
         <blockquote className="mt-7 text-2xl font-semibold leading-9 text-text-dark sm:text-quote">
-          &ldquo;I used to spend my evenings copy-pasting CVs. Now I open my
-          dashboard to see interviews waiting. It feels like cheating. Had 3
-          offers on the table simultaneously.&rdquo;
+          &ldquo;I used to lose entire evenings tailoring CVs and sorting through
+          listings. Now I open my dashboard with a shortlist ready to review.
+          It feels like having a personal job-search assistant.&rdquo;
         </blockquote>
         <div className="mt-8 flex items-center justify-center gap-3">
           <Image
@@ -28,7 +28,7 @@ export function Testimonial(): ReactElement {
               John Smith
             </p>
             <p className="text-xs font-medium leading-4 text-text-secondary">
-              Senior Developer
+              Product Engineer
             </p>
           </div>
         </div>

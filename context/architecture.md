@@ -213,7 +213,6 @@ URL saved to profiles table
 | remote_preference   | text[]      | One or more of remote / onsite / hybrid; any is exclusive |
 | preferred_locations | text[]      | Optional preferred locations                 |
 | salary_expectation  | text        | Optional                                     |
-| cover_letter_tone   | text        | formal / casual / enthusiastic               |
 | linkedin_url        | text        |                                              |
 | portfolio_url       | text        |                                              |
 | work_authorization  | text        | citizen / permanent_resident / visa_required |

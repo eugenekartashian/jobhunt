@@ -114,6 +114,8 @@ Update this file after every completed feature. Any AI agent reading this should
 - 2026-09-11: Refined the mobile navbar layout so guests see the CTA centered with the menu button at the right edge, while authenticated users keep avatar/sign-out controls before the right-aligned menu button.
 - 2026-09-11: Compacted the mobile login page by removing the mobile hero min-height, reducing responsive padding and heading sizes, tightening the provider panel spacing, and preserving full-size OAuth tap targets.
 - 2026-09-11: Restored desktop navbar links to an explicit centered position while preserving the separate mobile menu and right-aligned mobile controls.
+- 2026-09-11: Removed the footer from the public homepage and refreshed all homepage marketing copy across the hero, feature showcases, testimonial, image descriptions, and bottom CTA while preserving existing routes and interactions.
+- 2026-09-11: Removed the unused Cover Letter Tone profile field from runtime types, persistence validation, and UI. Kept the historical database column for compatibility, and changed Work Authorization to the clearer question "Do you have work authorization?" with an explicit placeholder and status options.
 
 ---
 

@@ -5,42 +5,41 @@ import { DashboardPreview } from '@/components/homepage/DashboardPreview';
 import { FeatureShowcase } from '@/components/homepage/FeatureShowcase';
 import { Hero } from '@/components/homepage/Hero';
 import { Testimonial } from '@/components/homepage/Testimonial';
-import { Footer } from '@/components/layout/Footer';
 import { Navbar } from '@/components/layout/Navbar';
 import { isUserAuthenticated } from '@/lib/insforge-auth';
 
 const managePoints = [
   {
-    title: 'Find jobs that actually fit',
-    body: 'Search by title and location or paste a job link. Get matched roles you can quickly scan.',
+    title: 'Find roles that fit your goals',
+    body: 'Search by position and place or add a job link. Review relevant opportunities without the noise.',
     accent: 'accent' as const
   },
   {
-    title: 'Know the Company Before You Apply',
-    body: 'Stop guessing what a company is about. Job Hunt browses their site and gives you everything you need to apply with confidence.',
+    title: 'Research before you reach out',
+    body: 'Get useful context on each employer. Job Hunt reviews their public information so you can apply with a clearer picture.',
     accent: 'info' as const
   },
   {
-    title: 'Keep track of every application',
-    body: "Keep a clear view of every job you've found, tailored. Your activity and progress all stay in one simple place.",
+    title: 'Keep your search organized',
+    body: 'Save the opportunities you discover and follow your progress from one focused workspace.',
     accent: 'success' as const
   }
 ];
 
 const confidencePoints = [
   {
-    title: 'Understand your match score',
-    body: "See how your profile lines up with each role before you apply. Get a clear breakdown of what fits and what's missing.",
+    title: 'See your fit at a glance',
+    body: 'Compare your profile with each opportunity before applying and understand where you are strongest.',
     accent: 'info' as const
   },
   {
-    title: 'AI-Powered Job Matching',
-    body: 'Stop guessing which jobs are worth applying to. Job Hunt scores every role against your actual skills so you focus on the ones that matter.',
+    title: 'Match with roles that suit you',
+    body: 'Job Hunt evaluates openings against your real experience, helping you prioritize the applications with the most promise.',
     accent: 'success' as const
   },
   {
-    title: 'Focus on the right roles',
-    body: 'Filter out low fit jobs and stay on the ones that actually matter. Spend less time sorting and more time applying.',
+    title: 'Spend time where it matters',
+    body: 'Move past low-fit openings and concentrate on the roles worth your attention, so more time goes into applying.',
     accent: 'accent' as const
   }
 ];
@@ -64,21 +63,21 @@ export default async function Home(): Promise<ReactElement> {
           <DashboardPreview />
           <div className="bg-subtle-stripes h-20 border-b border-border" />
           <FeatureShowcase
-            title="Manage Your Job Search With Ease"
+            title="A clearer way to manage your search"
             points={managePoints}
             image={{
               src: '/images/jobs-lists.png',
-              alt: 'A Job Hunt job list with company names, match score bars, salary estimates, and source badges.',
+              alt: 'Job Hunt opportunity list with employers, match scores, salary ranges, and sources.',
               width: 2364,
               height: 1778
             }}
           />
           <FeatureShowcase
-            title="Apply With More Confidence, Every Time"
+            title="Make every application count"
             points={confidencePoints}
             image={{
               src: '/images/some-log.png',
-              alt: 'A Job Hunt agent log showing scan, filter, and action steps for job applications.',
+              alt: 'Job Hunt activity log showing automated search and filtering steps.',
               width: 2144,
               height: 1656
             }}
@@ -92,7 +91,6 @@ export default async function Home(): Promise<ReactElement> {
             primaryLabel={isAuthenticated ? 'Go to Profile' : 'Get Started'}
           />
           <div className="bg-subtle-stripes h-20 border-b border-border" />
-          <Footer />
         </div>
       </main>
     </>
