@@ -261,7 +261,7 @@ Feature 04 Database Schema and its follow-up did not add or change UI components
 
 - Path: `components/layout/Navbar.tsx`
 - Purpose: Shared top navigation across public and authenticated pages.
-- Pattern notes: Desktop links remain inline from `sm` upward. On smaller screens, center the guest CTA and keep the compact icon-only `Menu`/`X` button at the right edge; authenticated avatar/sign-out controls sit before the menu. The button has a labeled vertical navigation panel, active route styling, and close-on-navigation behavior.
+- Pattern notes: Desktop links remain explicitly centered from `sm` upward. On smaller screens, center the guest CTA and keep the compact icon-only `Menu`/`X` button at the right edge; authenticated avatar/sign-out controls sit before the menu. The button has a labeled vertical navigation panel, active route styling, and close-on-navigation behavior.
 
 ### Responsive Login Panel
 

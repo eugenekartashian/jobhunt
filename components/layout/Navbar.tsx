@@ -41,12 +41,12 @@ export function Navbar({
 
   return (
     <header className="relative border-b border-border bg-surface">
-      <div className="mx-auto flex min-h-16 w-full max-w-page items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-8 lg:px-16">
+      <div className="relative mx-auto flex min-h-16 w-full max-w-page items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-8 lg:px-16">
         <Link href="/" className="focus-ring shrink-0 rounded-md" onClick={() => setIsMenuOpen(false)}>
           <BrandMark size="small" />
         </Link>
 
-        <nav aria-label="Primary navigation" className="hidden sm:block">
+        <nav aria-label="Primary navigation" className="absolute left-1/2 hidden -translate-x-1/2 sm:block">
           <ul className="flex items-center gap-10">
             {navigationItems.map((item) => (
               <li key={item.href}>

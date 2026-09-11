@@ -113,6 +113,7 @@ Update this file after every completed feature. Any AI agent reading this should
 - 2026-09-11: Added responsive mobile navigation to the shared `Navbar`: a `Menu`/`X` toggle, accessible expanded state, active route styling, and link-close behavior. Desktop navigation remains unchanged at the `sm` breakpoint and above.
 - 2026-09-11: Refined the mobile navbar layout so guests see the CTA centered with the menu button at the right edge, while authenticated users keep avatar/sign-out controls before the right-aligned menu button.
 - 2026-09-11: Compacted the mobile login page by removing the mobile hero min-height, reducing responsive padding and heading sizes, tightening the provider panel spacing, and preserving full-size OAuth tap targets.
+- 2026-09-11: Restored desktop navbar links to an explicit centered position while preserving the separate mobile menu and right-aligned mobile controls.
 
 ---
 
