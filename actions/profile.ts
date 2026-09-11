@@ -269,10 +269,12 @@ async function extractProfileUnsafe(): Promise<ProfileExtractionResult> {
   let PDFParse: typeof import("pdf-parse").PDFParse;
   try {
     const canvas = await import("@napi-rs/canvas");
+    const pdfWorker = await import("pdfjs-dist/legacy/build/pdf.worker.mjs");
     Object.assign(globalThis, {
       DOMMatrix: canvas.DOMMatrix,
       Path2D: canvas.Path2D,
       ImageData: canvas.ImageData,
+      pdfjsWorker: pdfWorker,
     });
     ({ PDFParse } = await import("pdf-parse"));
   } catch (error) {
