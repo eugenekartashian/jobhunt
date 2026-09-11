@@ -13,7 +13,7 @@ const providers = [
 
 export function OAuthButtons(): ReactElement {
   return (
-    <div className="mt-7 flex flex-col gap-3">
+    <div className="mt-5 flex flex-col gap-3 sm:mt-7">
       {providers.map((provider) => {
         const Icon = provider.icon;
 

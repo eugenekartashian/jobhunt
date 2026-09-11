@@ -250,3 +250,21 @@ Feature 04 Database Schema and its follow-up did not add or change UI components
 
 - Purpose: Upload PDF CVs through the authenticated profile action without blocking the user response on analytics.
 - Pattern notes: Keep the Server Action body limit above the 5 MB product limit for multipart overhead. The upload response should only wait for Storage and profile persistence; analytics must not block this interaction.
+
+### CV Extraction Runtime
+
+- Path: `actions/profile.ts`
+- Purpose: Server-only PDF text extraction used by the profile auto-fill action.
+- Pattern notes: Initialize native canvas globals and register the explicitly imported `pdfjs-dist` worker before importing `pdf-parse`; this keeps extraction compatible with Vercel's externalized server packages.
+
+### Responsive Navbar
+
+- Path: `components/layout/Navbar.tsx`
+- Purpose: Shared top navigation across public and authenticated pages.
+- Pattern notes: Desktop links remain inline from `sm` upward. On smaller screens, center the guest CTA and keep the compact icon-only `Menu`/`X` button at the right edge; authenticated avatar/sign-out controls sit before the menu. The button has a labeled vertical navigation panel, active route styling, and close-on-navigation behavior.
+
+### Responsive Login Panel
+
+- Path: `app/(auth)/login/page.tsx`, `components/auth/OAuthButtons.tsx`
+- Purpose: OAuth entry experience for public users.
+- Pattern notes: Mobile uses content-driven hero height, compact spacing and type, while provider buttons retain a comfortable minimum height for touch input. Desktop spacing and the two-column layout remain unchanged.

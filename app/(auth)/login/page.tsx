@@ -35,55 +35,55 @@ export default async function LoginPage({
   return (
     <>
       <Navbar ctaHref="/login" />
-      <main className="bg-background px-6 py-10 sm:px-8 lg:px-20">
+      <main className="bg-background px-4 py-6 sm:px-8 sm:py-10 lg:px-20">
         <section className="mx-auto grid w-full max-w-5xl overflow-hidden rounded-lg border border-border bg-surface shadow-preview lg:grid-cols-[1fr_0.88fr]">
-          <div className="bg-landing-glow flex min-h-112 flex-col justify-between border-b border-border px-8 py-10 sm:px-10 lg:border-b-0 lg:border-r lg:px-12">
+          <div className="bg-landing-glow flex flex-col justify-between border-b border-border px-5 py-6 sm:min-h-112 sm:px-10 sm:py-10 lg:border-b-0 lg:border-r lg:px-12">
             <div>
-              <div className="inline-flex items-center gap-3 rounded-full border border-border bg-surface px-4 py-2 text-sm font-semibold leading-5 text-text-secondary shadow-card">
+              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1.5 text-xs font-semibold leading-5 text-text-secondary shadow-card sm:gap-3 sm:px-4 sm:py-2 sm:text-sm">
                 <span
-                  className="flex size-5 items-center justify-center text-accent"
+                  className="flex size-4 items-center justify-center text-accent sm:size-5"
                   aria-hidden="true"
                 >
-                  <ShieldCheck className="size-5" aria-hidden="true" />
+                  <ShieldCheck className="size-4 sm:size-5" aria-hidden="true" />
                 </span>
                 OAuth secured by InsForge
               </div>
 
-              <h1 className="mt-10 max-w-2xl text-4xl font-bold leading-[1.05] text-text-slate sm:text-5xl">
+              <h1 className="mt-6 max-w-2xl text-3xl font-bold leading-tight text-text-slate sm:mt-10 sm:text-5xl sm:leading-[1.05]">
                 Sign in and let the agent prep your next application.
               </h1>
 
-              <p className="mt-6 max-w-xl text-base font-medium leading-7 text-text-secondary">
+              <p className="mt-4 max-w-xl text-sm font-medium leading-6 text-text-secondary sm:mt-6 sm:text-base sm:leading-7">
                 Connect with Google or GitHub to start building your profile,
                 matching jobs, and creating tailored application materials.
               </p>
             </div>
 
-            <p className="mt-10 text-sm font-semibold leading-6 text-text-secondary">
+            <p className="mt-6 text-xs font-semibold leading-5 text-text-secondary sm:mt-10 sm:text-sm sm:leading-6">
               New users are routed to profile setup after sign-in.
             </p>
           </div>
 
-          <div className="flex items-center bg-surface px-8 py-10 sm:px-10 lg:px-12">
+          <div className="flex items-center bg-surface px-5 py-7 sm:px-10 sm:py-10 lg:px-12">
             <div className="w-full">
-              <Link href="/" className="focus-ring mb-10 inline-flex rounded-md">
+              <Link href="/" className="focus-ring mb-6 inline-flex rounded-md sm:mb-10">
                 <BrandMark size="small" />
               </Link>
 
-              <p className="text-lg font-medium leading-7 text-text-secondary">
+              <p className="text-base font-medium leading-6 text-text-secondary sm:text-lg sm:leading-7">
                 Welcome to
               </p>
-              <h2 className="mt-3 text-3xl font-bold leading-tight text-text-black">
+              <h2 className="mt-2 text-2xl font-bold leading-tight text-text-black sm:mt-3 sm:text-3xl">
                 Job Hunt
               </h2>
-              <p className="mt-5 text-base font-medium leading-7 text-text-secondary">
+              <p className="mt-3 text-sm font-medium leading-6 text-text-secondary sm:mt-5 sm:text-base sm:leading-7">
                 Choose your preferred provider to continue.
               </p>
 
-              <div className="mt-8">
+              <div className="mt-6 sm:mt-8">
                 {errorMessage ? (
                   <div
-                    className="mb-5 rounded-md border border-error bg-surface px-4 py-3 text-sm font-semibold leading-5 text-error"
+                    className="mb-4 rounded-md border border-error bg-surface px-4 py-3 text-sm font-semibold leading-5 text-error sm:mb-5"
                     role="alert"
                   >
                     {errorMessage}

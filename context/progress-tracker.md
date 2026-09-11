@@ -109,6 +109,10 @@ Update this file after every completed feature. Any AI agent reading this should
 - 2026-09-11: Fixed the production CV upload 500 caused by `pdf-parse` loading `@napi-rs/canvas` and `DOMMatrix` at module initialization. PDF parsing is now loaded only when `Extract Profile` is used, so ordinary uploads do not initialize the parser.
 - 2026-09-11: Added `@napi-rs/canvas` as a direct production dependency and externalized it with `pdf-parse` so Vercel can provide the `DOMMatrix`, `Path2D`, and `ImageData` globals required by PDF extraction.
 - 2026-09-11: PDF extraction now explicitly initializes the `@napi-rs/canvas` globals before importing `pdf-parse`, preventing the parser from evaluating before `DOMMatrix`, `Path2D`, and `ImageData` exist in Vercel's Node runtime.
+- 2026-09-11: Fixed the remaining Vercel PDF extraction failure by directly importing `pdfjs-dist`'s worker module and registering it as `globalThis.pdfjsWorker` before `pdf-parse` creates a parser. Added `pdfjs-dist` as a direct dependency and a local declaration for its worker entrypoint.
+- 2026-09-11: Added responsive mobile navigation to the shared `Navbar`: a `Menu`/`X` toggle, accessible expanded state, active route styling, and link-close behavior. Desktop navigation remains unchanged at the `sm` breakpoint and above.
+- 2026-09-11: Refined the mobile navbar layout so guests see the CTA centered with the menu button at the right edge, while authenticated users keep avatar/sign-out controls before the right-aligned menu button.
+- 2026-09-11: Compacted the mobile login page by removing the mobile hero min-height, reducing responsive padding and heading sizes, tightening the provider panel spacing, and preserving full-size OAuth tap targets.
 
 ---
 
