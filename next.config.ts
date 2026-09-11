@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
       bodySizeLimit: "6mb",
     },
   },
-  serverExternalPackages: ["pdf-parse", "@browserbasehq/stagehand", "@browserbasehq/sdk"],
+  serverExternalPackages: ["pdf-parse", "@napi-rs/canvas", "@browserbasehq/stagehand", "@browserbasehq/sdk"],
 };
 
 export default nextConfig;

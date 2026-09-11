@@ -5,7 +5,6 @@ import { cookies } from "next/headers";
 import { unstable_rethrow } from "next/navigation";
 import { createServerClient } from "@insforge/sdk/ssr";
 import OpenAI from "openai";
-import { PDFParse } from "pdf-parse";
 
 import { requireUserAuthenticated } from "@/lib/insforge-auth";
 import { capturePostHogServerEvent } from "@/lib/posthog-server";
@@ -265,6 +264,14 @@ async function extractProfileUnsafe(): Promise<ProfileExtractionResult> {
   if (downloadError || !file) {
     console.error("[profile/extract] resume download failed", downloadError);
     return { success: false, message: "We could not read your saved resume. Please upload it again.", profile: null };
+  }
+
+  let PDFParse: typeof import("pdf-parse").PDFParse;
+  try {
+    ({ PDFParse } = await import("pdf-parse"));
+  } catch (error) {
+    console.error("[profile/extract] PDF parser failed to load", error);
+    return { success: false, message: "PDF extraction is temporarily unavailable. You can still use the uploaded CV.", profile: null };
   }
 
   const parser = new PDFParse({ data: Buffer.from(await file.arrayBuffer()) });
