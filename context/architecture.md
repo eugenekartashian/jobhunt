@@ -210,7 +210,7 @@ URL saved to profiles table
 | work_experience     | jsonb       | Array of up to 3 roles                       |
 | education           | jsonb       | Degree, field, institution, year             |
 | job_titles_seeking  | text[]      | Roles they want                              |
-| remote_preference   | text        | remote / onsite / hybrid / any               |
+| remote_preference   | text[]      | One or more of remote / onsite / hybrid; any is exclusive |
 | preferred_locations | text[]      | Optional preferred locations                 |
 | salary_expectation  | text        | Optional                                     |
 | cover_letter_tone   | text        | formal / casual / enthusiastic               |

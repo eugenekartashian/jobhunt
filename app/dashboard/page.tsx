@@ -1,26 +1,23 @@
 import type { ReactElement } from "react";
 
-import { AuthenticatedPlaceholder } from "@/components/auth/AuthenticatedPlaceholder";
+import { DashboardPageContent } from "@/components/dashboard/DashboardPageContent";
 import { Navbar } from "@/components/layout/Navbar";
+import { getDashboardActivityForUser, getDashboardAnalyticsForUser, getDashboardStatsForUser } from "@/lib/dashboard";
 import { requireUserAuthenticated } from "@/lib/insforge-auth";
-import { capturePostHogServerEvent } from "@/lib/posthog-server";
+
+export const dynamic = "force-dynamic";
 
 export default async function DashboardPage(): Promise<ReactElement> {
   const user = await requireUserAuthenticated();
-  await capturePostHogServerEvent({
-    distinctId: user.id,
-    event: "authenticated_placeholder_viewed",
-    properties: { page: "dashboard" },
-  });
-
+  const [stats, activity, analytics] = await Promise.all([
+    getDashboardStatsForUser(user.id),
+    getDashboardActivityForUser(user.id),
+    getDashboardAnalyticsForUser(user.id),
+  ]);
   return (
     <>
-      <Navbar ctaHref="/dashboard" />
-      <AuthenticatedPlaceholder
-        title="Dashboard"
-        description="Dashboard setup is next after the foundation auth flow is complete."
-        user={user}
-      />
+      <Navbar activeHref="/dashboard" user={user} />
+      <DashboardPageContent user={user} stats={stats} activity={activity} analytics={analytics} />
     </>
   );
 }

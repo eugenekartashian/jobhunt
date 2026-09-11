@@ -14,9 +14,10 @@ function Arrow(): ReactElement {
 
 type BottomCtaProps = {
   primaryHref: string;
+  primaryLabel?: string;
 };
 
-export function BottomCta({ primaryHref }: BottomCtaProps): ReactElement {
+export function BottomCta({ primaryHref, primaryLabel = "Get Started" }: BottomCtaProps): ReactElement {
   return (
     <section className="bg-landing-glow border-b border-border px-6 py-20 text-center sm:px-10">
       <div className="mx-auto flex max-w-3xl flex-col items-center">
@@ -25,7 +26,7 @@ export function BottomCta({ primaryHref }: BottomCtaProps): ReactElement {
           lot less overwhelming
         </h2>
         <p className="mt-7 text-base font-medium leading-6 text-text-secondary">
-          Set up your profile, upload your resume, and start finding matches in
+          Set up your profile, upload your CV, and start finding matches in
           minutes.
         </p>
         <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row">
@@ -35,7 +36,7 @@ export function BottomCta({ primaryHref }: BottomCtaProps): ReactElement {
             event="landing_cta_clicked"
             properties={{ placement: "bottom_cta" }}
           >
-            Get Started
+            {primaryLabel}
             <Arrow />
           </TrackedLink>
           <Link

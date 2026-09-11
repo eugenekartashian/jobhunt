@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import type { ReactElement } from "react";
+import { ShieldCheck } from "lucide-react";
 
 import { BrandMark } from "@/components/homepage/BrandMark";
 import { OAuthButtons } from "@/components/auth/OAuthButtons";
@@ -20,36 +21,11 @@ const errorMessages: Record<string, string> = {
   config_missing: "Authentication is not configured yet.",
 };
 
-function ShieldIcon(): ReactElement {
-  return (
-    <svg
-      className="size-5"
-      viewBox="0 0 20 20"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M10 2.8 4.5 5v4.2c0 3.7 2.2 6.8 5.5 8 3.3-1.2 5.5-4.3 5.5-8V5L10 2.8Z"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-      />
-      <path
-        d="m7.8 9.9 1.4 1.4 3.2-3.4"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 export default async function LoginPage({
   searchParams,
 }: LoginPageProps): Promise<ReactElement> {
   if (await isUserAuthenticated()) {
-    redirect("/dashboard");
+    redirect("/profile");
   }
 
   const params = await searchParams;
@@ -68,7 +44,7 @@ export default async function LoginPage({
                   className="flex size-5 items-center justify-center text-accent"
                   aria-hidden="true"
                 >
-                  <ShieldIcon />
+                  <ShieldCheck className="size-5" aria-hidden="true" />
                 </span>
                 OAuth secured by InsForge
               </div>

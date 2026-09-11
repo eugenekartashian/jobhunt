@@ -48,14 +48,19 @@ const confidencePoints = [
 export const dynamic = 'force-dynamic';
 
 export default async function Home(): Promise<ReactElement> {
-  const ctaHref = (await isUserAuthenticated()) ? '/dashboard' : '/login';
+  const isAuthenticated = await isUserAuthenticated();
+  const ctaHref = isAuthenticated ? '/profile' : '/login';
+  const ctaLabel = isAuthenticated ? 'Profile' : 'Start for free';
 
   return (
     <>
-      <Navbar ctaHref={ctaHref} />
+      <Navbar ctaHref={ctaHref} ctaLabel={ctaLabel} />
       <main className="mx-auto w-full max-w-page px-6 py-12 sm:px-8 lg:px-20">
         <div className="overflow-hidden border border-border bg-surface">
-          <Hero primaryHref={ctaHref} />
+          <Hero
+            primaryHref={ctaHref}
+            primaryLabel={isAuthenticated ? 'Go to Profile' : 'Get Started'}
+          />
           <DashboardPreview />
           <div className="bg-subtle-stripes h-20 border-b border-border" />
           <FeatureShowcase
@@ -72,7 +77,7 @@ export default async function Home(): Promise<ReactElement> {
             title="Apply With More Confidence, Every Time"
             points={confidencePoints}
             image={{
-              src: '/images/agnet-log.png',
+              src: '/images/some-log.png',
               alt: 'A Job Hunt agent log showing scan, filter, and action steps for job applications.',
               width: 2144,
               height: 1656
@@ -82,7 +87,10 @@ export default async function Home(): Promise<ReactElement> {
           <div className="bg-subtle-stripes h-20 border-b border-border" />
           <Testimonial />
           <div className="bg-subtle-stripes h-20 border-b border-border" />
-          <BottomCta primaryHref={ctaHref} />
+          <BottomCta
+            primaryHref={ctaHref}
+            primaryLabel={isAuthenticated ? 'Go to Profile' : 'Get Started'}
+          />
           <div className="bg-subtle-stripes h-20 border-b border-border" />
           <Footer />
         </div>

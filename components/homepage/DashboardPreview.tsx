@@ -1,12 +1,14 @@
 import Image from "next/image";
 import type { ReactElement } from "react";
 
+import dashboardDemo from "@/public/images/dashboard-demo.png";
+
 export function DashboardPreview(): ReactElement {
   return (
     <section className="border-b border-border bg-surface-tertiary px-6 py-14 sm:px-10 lg:py-16">
       <div className="mx-auto max-w-6xl">
         <Image
-          src="/images/dashboard-demo.png"
+          src={dashboardDemo}
           alt="Job Hunt dashboard showing jobs found, match rate, recent activity, and company research activity."
           width={4788}
           height={2416}

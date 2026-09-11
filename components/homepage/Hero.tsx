@@ -14,9 +14,10 @@ function Arrow(): ReactElement {
 
 type HeroProps = {
   primaryHref: string;
+  primaryLabel?: string;
 };
 
-export function Hero({ primaryHref }: HeroProps): ReactElement {
+export function Hero({ primaryHref, primaryLabel = 'Get Started' }: HeroProps): ReactElement {
   return (
     <section className="bg-landing-glow flex min-h-103.5 items-center justify-center border-b border-border px-6 py-16 text-center sm:px-10">
       <div className="mx-auto flex max-w-3xl flex-col items-center">
@@ -36,7 +37,7 @@ export function Hero({ primaryHref }: HeroProps): ReactElement {
             event="landing_cta_clicked"
             properties={{ placement: 'hero' }}
           >
-            Get Started
+            {primaryLabel}
             <Arrow />
           </TrackedLink>
           <Link

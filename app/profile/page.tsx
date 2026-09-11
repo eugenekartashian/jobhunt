@@ -1,26 +1,18 @@
 import type { ReactElement } from "react";
 
-import { AuthenticatedPlaceholder } from "@/components/auth/AuthenticatedPlaceholder";
 import { Navbar } from "@/components/layout/Navbar";
+import { ProfilePageClient } from "@/components/profile/ProfilePageClient";
 import { requireUserAuthenticated } from "@/lib/insforge-auth";
-import { capturePostHogServerEvent } from "@/lib/posthog-server";
+import { getProfileForUser } from "@/lib/profile";
 
 export default async function ProfilePage(): Promise<ReactElement> {
   const user = await requireUserAuthenticated();
-  await capturePostHogServerEvent({
-    distinctId: user.id,
-    event: "authenticated_placeholder_viewed",
-    properties: { page: "profile" },
-  });
+  const profile = await getProfileForUser(user.id);
 
   return (
     <>
-      <Navbar ctaHref="/dashboard" />
-      <AuthenticatedPlaceholder
-        title="Profile"
-        description="Profile setup is next after the foundation auth flow is complete."
-        user={user}
-      />
+      <Navbar activeHref="/profile" user={user} />
+      <ProfilePageClient userEmail={user.email ?? ""} userId={user.id} initialProfile={profile} />
     </>
   );
 }

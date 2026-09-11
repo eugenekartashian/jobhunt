@@ -1,48 +1,42 @@
-# Memory — Feature 04 database foundation
+# Memory — Feature 17 Dashboard Analytics
 
-Last updated: 2026-09-09 15:43 CEST
+Last updated: 2026-09-11
 
 ## What was built
 
-Feature 04 database foundation is implemented and verified in InsForge. The project currently has three migration files: the main schema migration, the follow-up migration, and the storage RLS migration.
-
-- `migrations/20260909_feature_04_database_schema.sql` creates `profiles`, `agent_runs`, `jobs`, and `agent_logs` with constraints, indexes, foreign keys, update triggers, and 16 own-user RLS policies.
-- `migrations/20260909_feature_04_follow_up.sql` adds `jobs.is_tailored`, the `public.handle_new_user()` trigger for automatic profile bootstrap after signup, and related schema polish.
-- `migrations/20260909_feature_04_storage_rls.sql` enables RLS on `storage.objects` and adds four own-user policies for the private `resumes` bucket.
-- `types/index.ts` contains the shared `Profile`, `WorkExperience`, `Education`, `AgentRun`, `Job`, and `AgentLog` interfaces and supporting unions.
-- `context/architecture.md` documents the schema and the `{user_id}/...` resume key convention.
-- `context/progress-tracker.md` marks Feature 04 complete and points to Feature 05.
+- Phase 1 foundation, Phase 2 profile/resume Features 05-08, Phase 3 Find Jobs Features 09-11, and Phase 4 Job Details Features 12-13 are complete.
+- Feature 13 includes the user-scoped company research API, Browserbase Fetch + Stagehand research, GPT-4o fallback synthesis, 9-field dossier persistence, progress logging, PostHog tracking, and responsive dossier card UI.
+- Feature 13 UI now matches the tutorial layout more closely: responsive insight-card grid, full-width role rationale, and separated source pills.
+- Feature 14 replaced the dashboard placeholder with `components/dashboard/DashboardPageContent.tsx`: four stats cards, recent activity timeline, company research bar chart, jobs-found line chart, and match-score distribution chart. `app/dashboard/page.tsx` now renders the protected dashboard with the signed-in navbar.
+- Feature 15 connected the four stat cards to `lib/dashboard.ts`, which calculates user-scoped totals from InsForge `jobs` data.
+- Feature 16 added `getDashboardActivityForUser`, which merges completed user-scoped `agent_runs` with jobs containing `company_research`, sorts them by timestamp, and renders the latest five entries.
+- Dashboard charts now use `recharts` with responsive sizing and interactive tooltips, while their data remains mock until Feature 17.
+- Feature 17 replaced mock chart series with server-side PostHog HogQL queries scoped by `distinct_id`: job searches and match scores use the last 30 days, company research uses the last 7 days. Missing query credentials or failed queries return empty chart states.
 
 ## Decisions made
 
-InsForge's storage table uses `bucket` and `key` columns, so the tutorial's Supabase-style `storage.objects` policy was adapted to the actual InsForge schema.
-
-Resume objects must use keys beginning with the authenticated user's UUID, for example `{user_id}/resume.pdf`. Every storage operation checks both the `resumes` bucket and the first path segment.
-
-The four application tables remain protected by own-user RLS. Runtime queries should still include explicit user scoping for clarity and defense in depth.
+- The dashboard is built in four planned slices: Feature 14 UI, Feature 15 real stats, Feature 16 recent activity, and Feature 17 PostHog analytics.
+- `context/designs/dashboard.png` is the visual source of truth: four stat cards, recent activity timeline, company research bar chart, jobs-over-time line chart, and match-score distribution chart.
+- Feature 14 established the protected dashboard layout with mock values. Feature 15 provides real stats, Feature 16 provides real activity, and Feature 17 provides PostHog analytics with empty states.
+- Use existing project tokens, navbar, card, spacing, and typography patterns. Do not add LinkedIn integration.
 
 ## Problems solved
 
-The private `resumes` bucket existed, but storage RLS was not enabled and no path-scoped policies were present. This is now applied and verified in the backend.
-
-The tutorial describes five migrations, while this project uses three migration files because the four table definitions are grouped into one migration. The resulting schema and security behavior now match the tutorial; the migration count is intentionally different. A migration is a versioned database change instruction used to reproduce schema, trigger, index, and policy changes consistently.
+- Feature 13 GPT dossier parsing now accepts scalar or JSON-string values for list fields such as `gapsToAddress`.
+- Stagehand is configured as a Next server external package so the production webpack build succeeds.
+- `npm run build` can fail when the environment cannot reach Google Fonts through `next/font`; `next build --webpack` passes.
 
 ## Current state
 
-InsForge verification confirms:
-
-- `profiles`, `agent_runs`, `jobs`, and `agent_logs` exist.
-- The private `resumes` bucket exists.
-- `storage.objects` RLS is enabled with four verified policies.
-- The auth user trigger and profile update behavior are present.
-- Feature 04 is complete; no known backend blocker remains.
-
-PostHog and the homepage/auth foundation are also implemented. The worktree contains unrelated existing project changes; preserve them.
+- Feature 13 is complete and reviewed.
+- Phase 5 Features 14-17 are complete.
+- Local credentials exist but are intentionally not stored in this memory.
+- Known older limitation: AI profile extraction can leave Key Responsibilities empty in some runs.
 
 ## Next session starts with
 
-Start Feature 05, Profile Page — Full UI. Read the required context files first, then build the profile form and resume management UI using the existing navbar, tokens, and shared types.
+- Phase 5 is complete. The next step is a review and polish pass before starting a new phase.
 
 ## Open questions
 
-The actual profile persistence actions and resume upload flow are intentionally deferred to Features 06–08.
+- Features 15-17 still need a decision on whether empty charts should show zeroed axes or a concise empty state when real data is absent.

@@ -42,7 +42,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     }
 
     const response = NextResponse.redirect(
-      new URL("/dashboard", getSiteOrigin(request)),
+      new URL("/profile", getSiteOrigin(request)),
     );
     const auth = createAuthActions({
       requestCookies: request.cookies,

@@ -9,6 +9,17 @@ export type WorkAuthorization =
   | "permanent_resident"
   | "visa_required";
 
+export type MissingField =
+  | "FULL NAME"
+  | "PHONE"
+  | "LOCATION"
+  | "JOB TITLE"
+  | "EXPERIENCE LEVEL"
+  | "YEARS EXP"
+  | "SKILLS"
+  | "WORK EXPERIENCE"
+  | "EDUCATION";
+
 export type AgentRunStatus = "running" | "completed" | "failed";
 
 export type JobSource = "search" | "url";
@@ -34,12 +45,15 @@ export type Education = {
 };
 
 export type CompanyResearch = {
-  overview?: string;
-  techStack?: string[];
-  culture?: string;
-  whyThisRoleExists?: string;
-  interviewPrep?: string[];
-  sources?: string[];
+  companyOverview: string;
+  techStack: string[];
+  culture: string[];
+  whyThisRole: string;
+  yourEdge: string[];
+  gapsToAddress: string[];
+  smartQuestions: string[];
+  interviewPrep: string[];
+  sources: string[];
 };
 
 export type Profile = {
@@ -56,7 +70,7 @@ export type Profile = {
   work_experience: WorkExperience[];
   education: Education;
   job_titles_seeking: string[];
-  remote_preference: RemotePreference | null;
+  remote_preference: RemotePreference[] | null;
   preferred_locations: string[];
   salary_expectation: string | null;
   cover_letter_tone: CoverLetterTone | null;
@@ -68,6 +82,24 @@ export type Profile = {
   is_complete: boolean;
   created_at: string;
   updated_at: string;
+};
+
+export type ExtractedProfile = {
+  full_name?: string;
+  phone?: string;
+  location?: string;
+  current_title?: string;
+  experience_level?: ExperienceLevel;
+  years_experience?: number;
+  skills?: string[];
+  industries?: string[];
+  work_experience?: WorkExperience[];
+  education?: Education;
+  job_titles_seeking?: string[];
+  remote_preference?: RemotePreference[];
+  preferred_locations?: string[];
+  linkedin_url?: string;
+  portfolio_url?: string;
 };
 
 export type AgentRun = {

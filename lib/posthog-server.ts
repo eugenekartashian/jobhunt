@@ -5,7 +5,13 @@ import { PostHog } from "posthog-node";
 export type PostHogServerEvent =
   | "auth_signed_in"
   | "auth_signed_out"
-  | "authenticated_placeholder_viewed";
+  | "authenticated_placeholder_viewed"
+  | "profile_saved"
+  | "resume_uploaded"
+  | "resume_generated"
+  | "job_search_started"
+  | "job_found"
+  | "company_researched";
 
 type ServerEventPayload = {
   distinctId: string;
