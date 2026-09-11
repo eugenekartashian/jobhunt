@@ -106,6 +106,9 @@ Update this file after every completed feature. Any AI agent reading this should
 - 2026-09-11: Fixed OAuth avatar rendering so initials remain visible until the provider image successfully loads, failed image URLs fall back cleanly, and a changed avatar URL resets the loading state.
 - 2026-09-11: Optimized production CV uploads by allowing the 5 MB PDF plus multipart overhead through Server Actions and removing the nonessential PostHog upload event from the upload request so analytics cannot delay the response.
 - 2026-09-11: Fixed the profile upload client so a thrown Server Action or production 500 always clears the uploading state and displays an actionable error instead of leaving the CV control spinning indefinitely.
+- 2026-09-11: Fixed the production CV upload 500 caused by `pdf-parse` loading `@napi-rs/canvas` and `DOMMatrix` at module initialization. PDF parsing is now loaded only when `Extract Profile` is used, so ordinary uploads do not initialize the parser.
+- 2026-09-11: Added `@napi-rs/canvas` as a direct production dependency and externalized it with `pdf-parse` so Vercel can provide the `DOMMatrix`, `Path2D`, and `ImageData` globals required by PDF extraction.
+- 2026-09-11: PDF extraction now explicitly initializes the `@napi-rs/canvas` globals before importing `pdf-parse`, preventing the parser from evaluating before `DOMMatrix`, `Path2D`, and `ImageData` exist in Vercel's Node runtime.
 
 ---
 

@@ -268,9 +268,15 @@ async function extractProfileUnsafe(): Promise<ProfileExtractionResult> {
 
   let PDFParse: typeof import("pdf-parse").PDFParse;
   try {
+    const canvas = await import("@napi-rs/canvas");
+    Object.assign(globalThis, {
+      DOMMatrix: canvas.DOMMatrix,
+      Path2D: canvas.Path2D,
+      ImageData: canvas.ImageData,
+    });
     ({ PDFParse } = await import("pdf-parse"));
   } catch (error) {
-    console.error("[profile/extract] PDF parser failed to load", error);
+    console.error("[profile/extract] PDF parser or canvas failed to load", error);
     return { success: false, message: "PDF extraction is temporarily unavailable. You can still use the uploaded CV.", profile: null };
   }
 
