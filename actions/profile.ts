@@ -3,7 +3,6 @@
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { unstable_rethrow } from "next/navigation";
-import { after } from "next/server";
 import { createServerClient } from "@insforge/sdk/ssr";
 import OpenAI from "openai";
 import { PDFParse } from "pdf-parse";
@@ -380,11 +379,6 @@ async function uploadResumeUnsafe(formData: FormData): Promise<ResumeUploadResul
     }
   }
 
-  after(() => capturePostHogServerEvent({
-    distinctId: user.id,
-    event: "resume_uploaded",
-    properties: { fileType: "pdf", fileSize: resume.size },
-  }));
   revalidatePath("/profile");
 
   return { success: true, message: "Resume uploaded.", url: data.url, key: data.key };

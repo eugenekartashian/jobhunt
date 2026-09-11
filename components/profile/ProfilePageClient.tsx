@@ -332,22 +332,30 @@ export function ProfilePageClient({
     const formData = new FormData();
     formData.set("resume", file);
     setIsUploadingResume(true);
-    const result = await uploadResume(formData);
-    setIsUploadingResume(false);
-    if (!result.success) {
-      setResumeState("invalid");
-      setResumeError(result.message);
-      setResumeFile(null);
-      return;
-    }
+    try {
+      const result = await uploadResume(formData);
+      if (!result.success) {
+        setResumeState("invalid");
+        setResumeError(result.message);
+        setResumeFile(null);
+        return;
+      }
 
-    setProfile((current) => ({
-      ...current,
-      resume_pdf_url: result.url,
-      resume_pdf_key: result.key,
-    }));
-    setResumeFile(null);
-    setResumeUploadMessage("CV uploaded successfully.");
+      setProfile((current) => ({
+        ...current,
+        resume_pdf_url: result.url,
+        resume_pdf_key: result.key,
+      }));
+      setResumeFile(null);
+      setResumeUploadMessage("CV uploaded successfully.");
+    } catch (error) {
+      console.error("[profile/upload-resume] client request failed", error);
+      setResumeState("invalid");
+      setResumeFile(null);
+      setResumeError("The CV upload failed on the server. Please try again.");
+    } finally {
+      setIsUploadingResume(false);
+    }
   };
 
   const handleGenerateResume = async () => {

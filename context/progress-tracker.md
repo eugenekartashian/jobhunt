@@ -104,7 +104,8 @@ Update this file after every completed feature. Any AI agent reading this should
 - 2026-09-11: Dashboard and Find Jobs layout polish aligned both authenticated screens to the shared `max-w-page` shell, standardized outer spacing, and tightened dashboard section gaps for a more compact data-dense layout.
 - 2026-09-11: Dashboard and Find Jobs content now match the Profile and Job Details layout with the shared `max-w-5xl` readable container and the same responsive page spacing.
 - 2026-09-11: Fixed OAuth avatar rendering so initials remain visible until the provider image successfully loads, failed image URLs fall back cleanly, and a changed avatar URL resets the loading state.
-- 2026-09-11: Optimized production CV uploads by allowing the 5 MB PDF plus multipart overhead through Server Actions and moving the PostHog upload event into Next.js `after`, so analytics no longer delays the upload response.
+- 2026-09-11: Optimized production CV uploads by allowing the 5 MB PDF plus multipart overhead through Server Actions and removing the nonessential PostHog upload event from the upload request so analytics cannot delay the response.
+- 2026-09-11: Fixed the profile upload client so a thrown Server Action or production 500 always clears the uploading state and displays an actionable error instead of leaving the CV control spinning indefinitely.
 
 ---
 

@@ -249,4 +249,4 @@ Feature 04 Database Schema and its follow-up did not add or change UI components
 ### CV Upload Flow
 
 - Purpose: Upload PDF CVs through the authenticated profile action without blocking the user response on analytics.
-- Pattern notes: Keep the Server Action body limit above the 5 MB product limit for multipart overhead, and schedule the PostHog event with Next.js `after` after storage and profile persistence succeed.
+- Pattern notes: Keep the Server Action body limit above the 5 MB product limit for multipart overhead. The upload response should only wait for Storage and profile persistence; analytics must not block this interaction.
